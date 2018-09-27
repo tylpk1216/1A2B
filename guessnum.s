@@ -309,10 +309,6 @@ check_repeat_end:
     jmp getrandom_loop
 
 getrandom_loop_end:
-    #push $answer
-    #call myprint
-    #add $4, %esp
-
     movl %ebp, %esp
     popl %ebp
     ret
