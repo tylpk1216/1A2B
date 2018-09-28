@@ -1,5 +1,5 @@
 # 1A2B
-This is a game that user guesses the number of computer.  
+This is a game that user guesses the number of computer.
 It is written by x86 Assembly(AT&T syntax).
 
 ### How to build it
@@ -27,3 +27,6 @@ Suppose the answer is "9527", user must try to guess the true answer.
 * "9627" -> 3A0B
 * "9527" -> 4A0B
 ```
+
+### Screenshot
+![running](/image/run.png)
