@@ -261,59 +261,6 @@ cal_b_end:
     ret
 
 //-----------------------------------------------------------------------------
-# different way to check repeated digit
-.type newanswer,@function
-newanswer:
-    pushl %ebp
-    movl %esp, %ebp
-
-    movl $0, %edi
-
-getrandom_loop:
-    cmpl $4, %edi
-    jge getrandom_loop_end
-
-    call getrandom
-
-    movl %eax, %ecx
-    addb $CHARACTER_0, %cl
-
-    movl $answer, %eax
-
-    movl $0, %esi
-check_repeat:
-    cmpl %edi, %esi
-    jg check_repeat_end
-
-    # orginal digit
-    movb (%eax, %esi, 1), %ch
-
-    cmpb %ch, %cl
-    je getrandom_loop
-
-    incl %esi
-
-    jmp check_repeat
-
-check_repeat_end:
-    # put digit in answer
-    movb %cl, (%eax, %edi, 1)
-
-    # put digit in right_msg
-    movl $right_msg, %eax
-    addl $RES_ANS_POS, %eax
-    movb %cl, (%eax, %edi, 1)
-
-    incl %edi
-
-    jmp getrandom_loop
-
-getrandom_loop_end:
-    movl %ebp, %esp
-    popl %ebp
-    ret
-
-//-----------------------------------------------------------------------------
 .type getrandom,@function
 getrandom:
     pushl %ebp
