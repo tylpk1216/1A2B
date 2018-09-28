@@ -10,9 +10,10 @@ result:
     .string "           A   B  \n"
 answer:
     .string "xxxx"
-checklist:
+
+digitlist:
     .ascii  "xxxxxxxxxx"
-not_found:
+not_used:
     .ascii  "x"
 
 acount:
@@ -305,12 +306,12 @@ newanswer1:
     movl %esp, %ebp
 
     movl $0, %edi
-    movl $checklist, %eax
+    movl $digitlist, %eax
 reset_list:
     cmpl $10, %edi
     jge reset_list_end
 
-    movb not_found, %cl
+    movb not_used, %cl
     movb %cl, (%eax, %edi, 1)
 
     incl %edi
@@ -327,8 +328,8 @@ getrandom_loop1:
 
     movl %eax, %ecx
 
-    movl $checklist, %eax
-    movb not_found, %dl
+    movl $digitlist, %eax
+    movb not_used, %dl
     cmpb %dl, (%eax, %ecx, 1)
     jne getrandom_loop1
 
@@ -344,8 +345,8 @@ getrandom_loop1:
     addl $RES_ANS_POS, %eax
     movb %dl, (%eax, %edi, 1)
 
-    # put digit in checklist
-    movl $checklist, %eax
+    # put digit in digitlist
+    movl $digitlist, %eax
     movb %dl, (%eax, %ecx, 1)
 
     incl %edi
