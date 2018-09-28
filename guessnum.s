@@ -7,7 +7,7 @@ right_msg:
 input:
     .string "                                    "
 result:
-    .string "                          \n"
+    .string "           A   B  \n"
 answer:
     .string "xxxx"
 checklist:
@@ -23,7 +23,7 @@ bcount:
 nowsecond:
     .long 0
 
-.equ EXIT,         0x71
+.equ EXIT,         'q'
 
 .equ A_COUNT_POS,  10
 .equ B_COUNT_POS,  14
