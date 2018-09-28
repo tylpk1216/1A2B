@@ -16,7 +16,11 @@ Pure Assembly code. Any special operations are offered by OS system calls.
 
 ### Game rules
 ```
-The answer is "9527"
+Suppose the answer is "9527", user must try to guess the true answer.
+
+"A" means the digit is at right position.
+"B" means the digit is at wrong position.
+
 * "1234" -> 0A1B
 * "5678" -> 0A2B
 * "9726" -> 2A1B
