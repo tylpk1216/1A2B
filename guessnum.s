@@ -267,10 +267,16 @@ getrandom:
     pushl %ebp
     movl %esp, %ebp
 
+    # get time in seconds => x
+    # x = x % 100
+    # y = (x * 1103515245) + 12345
+    # z = (y / 65536) % 32768
+    # digit = z % 10
+
     movl $13, %eax
     movl $nowsecond, %ebx
     int $0x80
-
+        
     movl $0, %edx
     movl $100, %ebx
     divl %ebx
@@ -280,7 +286,7 @@ getrandom:
 
     movl %edx, %eax
     movl $0, %edx
-    movl $65535, %ebx
+    movl $65536, %ebx
     divl %ebx
 
     movl $0, %edx
